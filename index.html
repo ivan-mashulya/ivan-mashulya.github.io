@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Иван & Машуля — 30.06.27</title>
+<meta name="description" content="Иван & Машуля. Будь с нами 30 июня 2027 года. Нижний Новгород.">
+<meta name="theme-color" content="#064b47">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Иван & Машуля — 30.06.27">
+<meta property="og:description" content="Будь с нами 30 июня 2027 года. Нижний Новгород.">
+<meta property="og:image" content="https://ivansokolsok-wq.github.io/wedding/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://ivansokolsok-wq.github.io/wedding/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Иван & Машуля — 30.06.27">
+<meta name="twitter:description" content="Будь с нами 30 июня 2027 года. Нижний Новгород.">
+<meta name="twitter:image" content="https://ivansokolsok-wq.github.io/wedding/preview.jpg">
+<link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="favicon.png">
+<style>
+@font-face{font-family:Betmo;src:url('assets/Betmo.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#064b47}
+body{font-family:Betmo,cursive}
+.wedding{position:fixed;inset:0;width:100%;height:100%;overflow:hidden;background:#064b47}
+.wedding__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.wedding__stage{position:absolute;left:50%;top:50%;height:100vh;width:calc(100vh * 1950 / 3450);max-width:100vw;transform:translate(-50%,-50%);aspect-ratio:1950/3450;pointer-events:none}
+.wedding__asset{position:absolute;display:block;max-width:none}
+.wedding__photo{left:27.0256%;top:15.3623%;width:48.6154%;height:auto}
+.wedding__frame{left:23.8974%;top:14.4348%;width:54.6154%;height:auto}
+.wedding__title{left:14.4615%;top:4.2029%;width:70.1026%;height:auto}
+.wedding__date{left:21.8462%;top:61.0725%;width:55.3846%;height:auto}
+.wedding__countdown{position:absolute;left:0;right:0;top:77.6%;height:10.2%;display:grid;grid-template-columns:repeat(4,1fr);align-items:start}
+.wedding__unit{width:100%;min-width:0;text-align:center;white-space:nowrap;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.12);display:flex;flex-direction:column;align-items:center}
+.wedding__num{width:100%;font-size:clamp(34px,5.65vh,86px);line-height:.92;letter-spacing:-.02em;text-align:center;font-variant-numeric:tabular-nums}
+.wedding__label{width:100%;font-size:clamp(15px,3.05vh,46px);line-height:1;margin-top:1.35vh;text-align:center}
+@media (max-aspect-ratio:1950/3450){
+  .wedding__stage{height:auto;width:100vw;max-height:100vh}
+  .wedding__num{font-size:clamp(30px,6.3vw,86px)}
+  .wedding__label{font-size:clamp(13px,3.35vw,46px)}
+}
+@media (prefers-reduced-motion:reduce){.wedding__video{display:none}}
+</style>
+</head>
+<body>
+<div class="wedding" aria-label="Иван и Машуля — 30 июня 2027">
+  <video class="wedding__video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+    <source src="assets/background.mp4" type="video/mp4">
+  </video>
+  <div class="wedding__stage">
+    <img class="wedding__asset wedding__title" src="assets/title.png" alt="Будь с нами">
+    <img class="wedding__asset wedding__frame" src="assets/frame.png" alt="">
+    <img class="wedding__asset wedding__photo" src="assets/photo.png" alt="Иван и Машуля">
+    <img class="wedding__asset wedding__date" src="assets/date.png" alt="30.06.27">
+    <section class="wedding__countdown" aria-label="Обратный отсчёт до свадьбы">
+      <div class="wedding__unit"><div class="wedding__num" id="days">—</div><div class="wedding__label">дней</div></div>
+      <div class="wedding__unit"><div class="wedding__num" id="hours">—</div><div class="wedding__label">часов</div></div>
+      <div class="wedding__unit"><div class="wedding__num" id="minutes">—</div><div class="wedding__label">минут</div></div>
+      <div class="wedding__unit"><div class="wedding__num" id="seconds">—</div><div class="wedding__label">секунд</div></div>
+    </section>
+  </div>
+</div>
+<script>
+(function(){
+  const target=new Date('2027-06-30T15:00:00+03:00').getTime();
+  const out={days:document.getElementById('days'),hours:document.getElementById('hours'),minutes:document.getElementById('minutes'),seconds:document.getElementById('seconds')};
+  function tick(){
+    let diff=Math.max(0,target-Date.now());
+    const d=Math.floor(diff/86400000); diff%=86400000;
+    const h=Math.floor(diff/3600000); diff%=3600000;
+    const m=Math.floor(diff/60000); diff%=60000;
+    const s=Math.floor(diff/1000);
+    out.days.textContent=String(d);
+    out.hours.textContent=String(h).padStart(2,'0');
+    out.minutes.textContent=String(m).padStart(2,'0');
+    out.seconds.textContent=String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick,1000);
+  const video=document.querySelector('.wedding__video');
+  video.muted=true;
+  video.play().catch(()=>{});
+})();
+</script>
+</body>
+</html>
